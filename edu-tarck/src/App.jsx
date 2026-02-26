@@ -7,11 +7,20 @@ import Login from "./pages/login.jsx";
 import Courses from "./pages/Courses.jsx";
 import ProtectedRoute from "./components/protectRoute.jsx";
 
+
 function App() {
   const navigate = useNavigate();
 
   return (
     <div className="app-container">
+
+
+      <div className="carosel">
+
+
+      </div>
+
+
       <Navbar />
       <main>
         <Routes>

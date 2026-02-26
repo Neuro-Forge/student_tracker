@@ -1,6 +1,7 @@
 // src/pages/Courses.jsx
 import { useState } from "react";
 import Card from "../components/card.jsx";
+import AddCourse from "../components/AddCourse.jsx";
 
 function Courses() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -9,8 +10,7 @@ function Courses() {
     { id: 2, title: "Advanced React", description: "Hooks, Context API, and performance." }
   ]);
 
-  const addCourse = () => {
-    const newCourse = { id: Date.now(), title: "New Course", description: "Course description" };
+  const addCourse = (newCourse) => {
     setCourses([...courses, newCourse]);
   };
 
@@ -21,17 +21,19 @@ function Courses() {
   return (
     <div style={{ padding: "2rem" }}>
       <h2>Courses</h2>
-      {user?.role === "admin" && (
-        <button onClick={addCourse}>Add Course</button>
-      )}
+      {user?.role === "admin" && <AddCourse onAddCourse={addCourse} />}
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {courses.map(course => (
-          <Card 
-            key={course.id} 
-            title={course.title} 
-            description={course.description} 
-            actionText={user?.role === "admin" ? "Delete" : "Enroll"} 
-            onAction={() => user?.role === "admin" ? deleteCourse(course.id) : alert("Enrolled!")} 
+          <Card
+            key={course.id}
+            title={course.title}
+            description={course.description}
+            actionText={user?.role === "admin" ? "Delete" : "Enroll"}
+            onAction={() =>
+              user?.role === "admin"
+                ? deleteCourse(course.id)
+                : alert("Enrolled!")
+            }
           />
         ))}
       </div>

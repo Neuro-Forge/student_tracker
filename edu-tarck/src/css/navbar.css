@@ -1,6 +1,6 @@
 /* navbar.css - modern minimalist theme */
 :root {
-    --color-bg: #f9f9f9;
+    --color-bg: #4ec4d6;
     --color-primary: #333333;
     --color-accent: #007acc;
     --color-text: #444444;
@@ -20,7 +20,7 @@
     align-items: center;
     background-color: var(--color-bg);
     padding: 1rem 2rem;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid #000000;
 }
 
 .h1 {
