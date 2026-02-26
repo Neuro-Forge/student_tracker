@@ -3,27 +3,26 @@ import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 
-export default function Login(){
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
-const navigate = useNavigate();
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-const handelLogin = (e)=>{
+  const handleLogin = (e) => {
     e.preventDefault();
-    localStorage.setItem('user', JSON.stringify({email,role : 'student'}));
-    navigate('/dashboard');
-}
+    // store a dummy user object (in a real app you'd authenticate first)
+    localStorage.setItem('user', JSON.stringify({ email, role: 'student' }));
+    navigate('/dashboard'); // redirect after successful "login"
+  };
 
- return(
-    <div className={login}>
-        <h1>Login</h1>
-        <form>
-            <input type="email" placeholder="Email" value={email} onChange={(e)=> setEmail(e.target.value)} />
-            <input type="password" placeholder="Password"  value={password} onChange={(e)=> setPassword(e.target.value)}/>
-            <button type="submit">Login</button>
-        </form>
-
+  return (
+    <div className="login">
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit">Login</button>
+      </form>
     </div>
- )
-
+  );
 }
